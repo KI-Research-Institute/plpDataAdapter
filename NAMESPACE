@@ -2,7 +2,6 @@
 
 export(allignDataAndPrediction)
 export(getLRModelCovariates)
-export(summarizeResults)
 export(transformPlpDataToDataFrame)
 import(FeatureExtraction)
 import(ParallelLogger)

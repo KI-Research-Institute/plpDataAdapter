@@ -82,36 +82,3 @@ allignDataAndPrediction <- function(dataXY, plpResults, subsets=c('Train', 'Test
   return(list(dataXY=dataXY, prediction=prediction))
 
 }
-
-
-#' summarize PLP results (Temporary function)
-#'
-#' @description Estimate external performance using external statistics and an internal dataset.
-#'
-#' @param s a data frame with 'metric' and 'value' columns
-#' @param evaluation a string
-#'
-#' @export
-summarizeResults <- function(s, evaluation) {
-
-  cat(evaluation, 'AUROC:\t', s[(s['metric']=='AUROC') & (s['evaluation']==evaluation), 'value'][[1]], '\n')
-  f <- c(
-    'populationSize',
-    'outcomeCount',
-    'AUROC',
-    '95% lower AUROC',
-    '95% upper AUROC',
-    # AUPRC
-    'brier score',
-    # brier score scaled
-    # Eavg
-    # E90
-    # Emax
-    'calibrationInLarge mean prediction',
-    'calibrationInLarge observed risk'
-  )
-  displayRows <- (s['evaluation']==evaluation) & (s[['metric']] %in% f)
-  print(format(s[displayRows, c('metric', 'value')], digits=3))
-
-}
-
